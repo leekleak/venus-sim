@@ -38,8 +38,11 @@ mesh = SubResource("CylinderMesh_8p8qe")
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.08170754, 0.05880949, -0.0027199686)
 mesh = SubResource("CylinderMesh_8p8qe")
 
+[node name="ColorSensor1" type="RayCast3D" parent="." unique_id=1736251541]
+transform = Transform3D(1, 0, 0, 0, 1, -1.7484555e-07, 0, 1.7484555e-07, 1, 0, 0.18199241, -0.0960276)
+
 [node name="DistanceSensor1" type="RayCast3D" parent="." unique_id=1319081156]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.07085174, -0.06433808)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.02228479, -0.0751777)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1892018694]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14094716, 0)
