@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://buwq6nlkjvwu5"]
+
+[ext_resource type="Script" uid="uid://donic51ulxjnb" path="res://Autonomous.gd" id="1_3dxm6"]
+[ext_resource type="Script" uid="uid://bwqhr4wd80dxr" path="res://node_3d.gd" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://idrtf4nuugyf" path="res://Robot.tscn" id="1_uu6xs"]
+[ext_resource type="Script" uid="uid://c5t4r8x45trxt" path="res://UI.gd" id="3_fos0i"]
+[ext_resource type="Material" uid="uid://27yw7e7ysxdo" path="res://Paper001_4K-PNG/Paper001_4K-PNG.tres" id="3_r0du0"]
+[ext_resource type="Shader" uid="uid://7ectcqtxcnxh" path="res://outline.gdshader" id="4_cm0pq"]
+
+[sub_resource type="Environment" id="Environment_rxg2q"]
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+fog_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_cm0pq"]
+size = Vector3(0.4, 0.315, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fos0i"]
+render_priority = 0
+shader = ExtResource("4_cm0pq")
+shader_parameter/black_bar = 0.4800000228
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cm0pq"]
+size = Vector2(50, 50)
+
+[node name="Node3D" type="Node3D" unique_id=1381233979 node_paths=PackedStringArray("robot")]
+script = ExtResource("1_3dxm6")
+robot = NodePath("Robot")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=271990406]
+transform = Transform3D(1, 0, 0, 0, 0.6755902, 0.7372773, 0, -0.7372773, 0.6755902, 0, 0, 0)
+script = ExtResource("1_glv2v")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=2003104810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10339141, 4.207091)
+fov = 41.4
+
+[node name="Robot" parent="." unique_id=1540535546 instance=ExtResource("1_uu6xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012, 0, 0.013)
+
+[node name="Control" type="Control" parent="." unique_id=2004248089 node_paths=PackedStringArray("robot")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_fos0i")
+robot = NodePath("../Robot")
+
+[node name="HSlider" type="HSlider" parent="Control" unique_id=714826300]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -32.0
+offset_right = 235.0
+offset_bottom = -16.0
+grow_vertical = 0
+max_value = 360.0
+
+[node name="Label" type="Label" parent="Control" unique_id=240803947]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=994485197]
+environment = SubResource("Environment_rxg2q")
+
+[node name="Environment" type="Node3D" parent="." unique_id=1591908052]
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Environment" unique_id=284381619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27407277, 0.16142699, 0.64715934)
+use_collision = true
+mesh = SubResource("BoxMesh_cm0pq")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Environment" unique_id=1512026918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012524009, 0.16130939, -1.2078344)
+use_collision = true
+mesh = SubResource("BoxMesh_cm0pq")
+
+[node name="Platform" type="MeshInstance3D" parent="Environment" unique_id=1375880951]
+material_override = ExtResource("3_r0du0")
+material_overlay = SubResource("ShaderMaterial_fos0i")
+mesh = SubResource("PlaneMesh_cm0pq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=411014586]
+transform = Transform3D(0.5544087, 0.53773314, -0.63519603, 0, 0.76323247, 0.646124, 0.8322445, -0.3582168, 0.42314273, 0, 1.8347338, 0)
+shadow_enabled = true
+
+[connection signal="value_changed" from="Control/HSlider" to="Node3D" method="_on_h_slider_value_changed"]
