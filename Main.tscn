@@ -10,10 +10,19 @@
 [ext_resource type="PackedScene" uid="uid://dvee5nfi4vq6s" path="res://box.tscn" id="7_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dgs1rohxrnucn" path="res://death_zone.tscn" id="7_trn2v"]
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_03owx"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 4.72
+dof_blur_far_transition = 0.5
+dof_blur_near_enabled = true
+dof_blur_near_distance = 3.55
+
 [sub_resource type="Environment" id="Environment_rxg2q"]
 glow_enabled = true
 glow_normalized = true
 glow_intensity = 0.18
+fog_mode = 1
+fog_density = 1.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cm0pq"]
 material = ExtResource("3_r0du0")
@@ -41,6 +50,7 @@ script = ExtResource("1_glv2v")
 
 [node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=2003104810]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10339141, 4.207091)
+attributes = SubResource("CameraAttributesPractical_03owx")
 fov = 41.4
 
 [node name="Robot" parent="." unique_id=892020308 instance=ExtResource("1_uu6xs")]
@@ -150,12 +160,15 @@ transform = Transform3D(0.3645203, 0.861953, -0.35236633, 0.06256779, 0.35487574
 shadow_enabled = true
 shadow_bias = 0.004
 spot_range = 10.226
-spot_attenuation = -0.79
+spot_attenuation = 1.16
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=411014586]
-transform = Transform3D(0.5544087, 0.53773314, -0.63519603, 0, 0.76323247, 0.646124, 0.8322445, -0.3582168, 0.42314273, 0, 1.8347338, 0)
-visible = false
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=136007832]
+transform = Transform3D(-0.55854344, 0.7870274, -0.26194847, 0.06256778, 0.35487574, 0.9328175, 0.8271121, 0.50462955, -0.2474561, -1.3513386, 3.2004323, -1.6847501)
+light_color = Color(0.7546148, 0.6094233, 0.4376656, 1)
 shadow_enabled = true
+shadow_bias = 0.004
+spot_range = 10.226
+spot_attenuation = 0.35
 
 [node name="box" parent="." unique_id=643047468 instance=ExtResource("7_lgr22")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.84336436, 0.20585938, -0.5487459)
