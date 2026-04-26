@@ -25,10 +25,6 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/aspect="expand"
 
-[filesystem]
-
-import/blender/enabled=false
-
 [input]
 
 left={
@@ -54,4 +50,3 @@ lmb={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-lights_and_shadows/directional_shadow/size=16384

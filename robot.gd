@@ -2,8 +2,8 @@ class_name Robot
 extends CharacterBody3D
 
 @export var manual: bool = false
-@onready var wheel_l: MeshInstance3D = $WheelL
-@onready var wheel_r: MeshInstance3D = $WheelR
+@onready var wheel_l: Node3D = $WheelL
+@onready var wheel_r: Node3D = $WheelR
 @onready var color_sensor_1: RayCast3D = $ColorSensor1
 @onready var distance_sensor_1: RayCast3D = $DistanceSensor1
 var rotationSpeed = 2

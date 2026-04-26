@@ -4,25 +4,16 @@
 [ext_resource type="Script" uid="uid://bwqhr4wd80dxr" path="res://node_3d.gd" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://idrtf4nuugyf" path="res://Robot.tscn" id="1_uu6xs"]
 [ext_resource type="Script" uid="uid://c5t4r8x45trxt" path="res://UI.gd" id="3_fos0i"]
-[ext_resource type="Material" uid="uid://27yw7e7ysxdo" path="res://Paper001_4K-PNG/Paper001_4K-PNG.tres" id="3_r0du0"]
+[ext_resource type="Material" uid="uid://27yw7e7ysxdo" path="res://assets/Paper001_4K-PNG/Paper001_4K-PNG.tres" id="3_r0du0"]
 [ext_resource type="Script" uid="uid://c3vxx0d63n0po" path="res://color_object.gd" id="5_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://dd50vby1er1ws" path="res://rock.tscn" id="5_03owx"]
+[ext_resource type="PackedScene" uid="uid://dvee5nfi4vq6s" path="res://box.tscn" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://dgs1rohxrnucn" path="res://death_zone.tscn" id="7_trn2v"]
 
 [sub_resource type="Environment" id="Environment_rxg2q"]
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
 glow_enabled = true
-fog_enabled = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_cm0pq"]
-size = Vector3(0.4, 0.315, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dxm6"]
-albedo_color = Color(0.13199998, 0.88, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_lgr22"]
-material = SubResource("StandardMaterial3D_3dxm6")
-size = Vector3(0.03, 0.03, 0.03)
+glow_normalized = true
+glow_intensity = 0.18
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cm0pq"]
 material = ExtResource("3_r0du0")
@@ -39,9 +30,10 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_fos0i")
 size = Vector2(50, 50)
 
-[node name="Node3D" type="Node3D" unique_id=1381233979 node_paths=PackedStringArray("robot")]
+[node name="Node3D" type="Node3D" unique_id=1381233979 node_paths=PackedStringArray("robot1", "robot2")]
 script = ExtResource("1_3dxm6")
-robot = NodePath("Robot")
+robot1 = NodePath("Robot")
+robot2 = NodePath("Robot2")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=271990406]
 transform = Transform3D(-0.22940427, -0.7176151, 0.65757304, -1.492773e-08, 0.6755903, 0.7372774, -0.97333133, 0.16913459, -0.15498328, 0, 0, 0)
@@ -51,10 +43,13 @@ script = ExtResource("1_glv2v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10339141, 4.207091)
 fov = 41.4
 
-[node name="Robot" parent="." unique_id=1540535546 instance=ExtResource("1_uu6xs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012, 0, 0.013)
+[node name="Robot" parent="." unique_id=892020308 instance=ExtResource("1_uu6xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012, 0, -0.12911017)
 
-[node name="Control" type="Control" parent="." unique_id=2004248089 node_paths=PackedStringArray("robot")]
+[node name="Robot2" parent="." unique_id=447241174 instance=ExtResource("1_uu6xs")]
+transform = Transform3D(-0.9983237, 0, -0.057877753, 0, 1, 0, 0.057877753, 0, -0.9983237, -0.024, 0, 0.12144542)
+
+[node name="Control" type="Control" parent="." unique_id=2004248089 node_paths=PackedStringArray("robot1", "robot2")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,12 +57,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_fos0i")
-robot = NodePath("../Robot")
+robot1 = NodePath("../Robot")
+robot2 = NodePath("../Robot2")
 
 [node name="Label" type="Label" parent="Control" unique_id=240803947]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 138.0
+offset_bottom = 35.0
+text = "Temporary text"
+
+[node name="Label2" type="Label" parent="Control" unique_id=2078916468]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -138.0
+offset_top = 18.0
+offset_right = -18.0
+offset_bottom = 41.0
+grow_horizontal = 0
+text = "Temporary text"
+horizontal_alignment = 2
 
 [node name="CheckButton" type="CheckButton" parent="Control" unique_id=393480518]
 layout_mode = 1
@@ -81,52 +93,88 @@ offset_bottom = -19.0
 grow_vertical = 0
 text = "Run exploration"
 
+[node name="HSlider" type="HSlider" parent="Control" unique_id=774015861]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -35.0
+offset_right = 162.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 2.0
+step = 0.1
+value = 1.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=994485197]
 environment = SubResource("Environment_rxg2q")
 
 [node name="Environment" type="Node3D" parent="." unique_id=1591908052]
 
-[node name="CSGMesh3D2" type="CSGMesh3D" parent="Environment" unique_id=284381619]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56970316, 0.16142699, 0.64715934)
-use_collision = true
-mesh = SubResource("BoxMesh_cm0pq")
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="Environment" unique_id=1512026918]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6495641, 0.16130939, -1.2078344)
-use_collision = true
-mesh = SubResource("BoxMesh_cm0pq")
-
-[node name="CSGMesh3D3" type="CSGMesh3D" parent="Environment" unique_id=1822357356]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19692945, 0.017007723, 0.643298)
-use_collision = true
-mesh = SubResource("BoxMesh_lgr22")
-script = ExtResource("5_3dxm6")
-color = Color(0.13333334, 0.8784314, 0, 1)
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="Environment" unique_id=1719763475]
+[node name="Stage" type="StaticBody3D" parent="Environment" unique_id=1719763475]
 script = ExtResource("5_3dxm6")
 color = Color(1, 1, 1, 1)
 
-[node name="Platform" type="MeshInstance3D" parent="Environment/StaticBody3D2" unique_id=1375880951]
+[node name="Platform" type="MeshInstance3D" parent="Environment/Stage" unique_id=1375880951]
+layers = 3
 mesh = SubResource("PlaneMesh_cm0pq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D2" unique_id=498168929]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Stage" unique_id=498168929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001373291, 0.0053593814, -0.0013427734)
 shape = SubResource("BoxShape3D_fos0i")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment" unique_id=610394394]
+[node name="Outside" type="StaticBody3D" parent="Environment" unique_id=610394394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0128593445, 0)
 script = ExtResource("5_3dxm6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D" unique_id=747339041]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Outside" unique_id=747339041]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.026, 0)
 shape = SubResource("WorldBoundaryShape3D_3dxm6")
 
-[node name="Platform2" type="MeshInstance3D" parent="Environment/StaticBody3D" unique_id=602672911]
+[node name="Platform2" type="MeshInstance3D" parent="Environment/Outside" unique_id=602672911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01533252, 0.011850834, 0.0015271902)
 mesh = SubResource("PlaneMesh_3dxm6")
+
+[node name="DeathZone" parent="Environment" unique_id=1254137864 instance=ExtResource("7_trn2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5042643, 0.012822896, 0.17899615)
+
+[node name="DeathZone2" parent="Environment" unique_id=1013566058 instance=ExtResource("7_trn2v")]
+transform = Transform3D(-0.7535276, 0, -0.52118367, 0, 1, 0, 2.1472907, 0, -0.18289384, -0.3860837, 0.012822896, -0.47187608)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=251323555]
+transform = Transform3D(0.3645203, 0.861953, -0.35236633, 0.06256779, 0.35487574, 0.9328175, 0.9290911, -0.3620777, 0.07542893, -1.3513386, 3.2004323, 0)
+shadow_enabled = true
+shadow_bias = 0.004
+spot_range = 10.226
+spot_attenuation = -0.79
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=411014586]
 transform = Transform3D(0.5544087, 0.53773314, -0.63519603, 0, 0.76323247, 0.646124, 0.8322445, -0.3582168, 0.42314273, 0, 1.8347338, 0)
+visible = false
 shadow_enabled = true
 
+[node name="box" parent="." unique_id=643047468 instance=ExtResource("7_lgr22")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.84336436, 0.20585938, -0.5487459)
+
+[node name="box2" parent="." unique_id=263799519 instance=ExtResource("7_lgr22")]
+transform = Transform3D(0.0772424, 0, 0.18448202, 0, 0.2, 0, -0.18448202, 0, 0.0772424, -0.6672853, 0.20585938, 0.56857574)
+
+[node name="Rock3" parent="." unique_id=2101275796 instance=ExtResource("5_03owx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82791173, 0.035775565, -0.8403707)
+
+[node name="Rock2" parent="." unique_id=715524415 instance=ExtResource("5_03owx")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.2619524, 0.03932873, 0.647071)
+color = Color(0.50996745, 0.71635664, 0, 1)
+
+[node name="Rock4" parent="." unique_id=1587493105 instance=ExtResource("5_03owx")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5768677, 0.013821185, -0.8538655)
+color = Color(1, 0.089999974, 0.18099988, 1)
+
 [connection signal="toggled" from="Control/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="drag_ended" from="Control/HSlider" to="Node3D" method="_on_h_slider_drag_ended"]
+[connection signal="drag_started" from="Control/HSlider" to="Node3D" method="_on_h_slider_drag_started"]
+[connection signal="value_changed" from="Control/HSlider" to="Control" method="_on_h_slider_value_changed"]

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dgs1rohxrnucn"]
+
+[ext_resource type="Script" uid="uid://c3vxx0d63n0po" path="res://color_object.gd" id="1_2aghb"]
+[ext_resource type="Texture2D" uid="uid://dsucikfsrehkw" path="res://assets/dead.png" id="2_f7myi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c6i3y"]
+size = Vector3(0.2, 0.01, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2ibq"]
+albedo_texture = ExtResource("2_f7myi")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j4qnp"]
+material = SubResource("StandardMaterial3D_c2ibq")
+size = Vector2(0.2, 0.2)
+
+[node name="DeathZone" type="StaticBody3D" unique_id=1254137864]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_2aghb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1325274227]
+shape = SubResource("BoxShape3D_c6i3y")
+
+[node name="Platform2" type="MeshInstance3D" parent="." unique_id=577586139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010358036, 0)
+layers = 2
+mesh = SubResource("PlaneMesh_j4qnp")

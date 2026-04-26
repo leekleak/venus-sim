@@ -1,0 +1,39 @@
+[gd_scene format=4 uid="uid://dvee5nfi4vq6s"]
+
+[ext_resource type="Texture2D" uid="uid://c6p1wxd6snsf1" path="res://assets/box_Caixa.png.png" id="1_g2tbl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5u8e"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_g2tbl")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ap4dh"]
+resource_name = "box_Cube"
+_surfaces = [{
+"aabb": AABB(-1.0000004, -1, -1.0000004, 2.000001, 2, 2.000001),
+"attribute_data": PackedByteArray("zeGn/6OdKeDG4Zngo53//07ipKCXno2/xJ6JoMDhM786gJq/EJ5foVmecr84gKGfUOF5v8adtd/n4XTe/p31v///uaDE4ua/wuKjoPz/27984qafCZ9xf0PiM3/Pnhug"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_m5u8e"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(1.9978759, 1.9995426, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v8AAAAA/78AAAAA/v//v/7/AAD+//+/AAAAAAAA/7//////AAD/vwAA///+//+/AAD//wAA/7/+////////v/7/AAAAAOnV/v//////6dX/////AAA11f7/AAD+/5/W/v8AAP7/XH8AAP///v9kfv7//////+B+AAAAAP7/4H4AAAAA/v9Q1QAA//8AAFDVAAD///7/RNUAAAAAAABc1f////8AAP//AAAAAAAA///+/wAAAAD//wAA//8AAP//ZAFNf90AuoEWAC2AFgAtgMf/kH+N/riAfP9AgHz/QID4KQMr+CkDK9AqlyohKW4r/////////////////////1dVr6pXVa+qXlW9qk9Vn6pO/6+ATv+vgIT/eYAb/+OA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oq5cr"]
+size = Vector3(4.4957886, 2.0061035, 1.9700928)
+
+[node name="box" type="StaticBody3D" unique_id=643047468]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=851669579]
+transform = Transform3D(2.2719219, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("ArrayMesh_ap4dh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=158576046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007293701, -0.0072021484, -0.0037231445)
+shape = SubResource("BoxShape3D_oq5cr")
