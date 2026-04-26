@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://idrtf4nuugyf"]
 
-[ext_resource type="Script" uid="uid://n80qwnn5nb7m" path="res://robot.gd" id="1_lhh6t"]
+[ext_resource type="Script" uid="uid://n80qwnn5nb7m" path="res://objects/robot/robot.gd" id="1_lhh6t"]
 [ext_resource type="PackedScene" uid="uid://q8ay4ykfudpd" path="res://assets/robot/robot.glb" id="2_8mo4m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lhh6t"]

@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://buwq6nlkjvwu5"]
 
 [ext_resource type="Script" uid="uid://donic51ulxjnb" path="res://Autonomous.gd" id="1_3dxm6"]
-[ext_resource type="Script" uid="uid://bwqhr4wd80dxr" path="res://node_3d.gd" id="1_glv2v"]
-[ext_resource type="PackedScene" uid="uid://idrtf4nuugyf" path="res://Robot.tscn" id="1_uu6xs"]
-[ext_resource type="Script" uid="uid://c5t4r8x45trxt" path="res://UI.gd" id="3_fos0i"]
+[ext_resource type="Script" uid="uid://bwqhr4wd80dxr" path="res://scripts/camera_controller.gd" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://idrtf4nuugyf" path="res://objects/robot/Robot.tscn" id="1_uu6xs"]
+[ext_resource type="Script" uid="uid://c5t4r8x45trxt" path="res://scripts/UI.gd" id="3_fos0i"]
 [ext_resource type="Material" uid="uid://27yw7e7ysxdo" path="res://assets/Paper001_4K-PNG/Paper001_4K-PNG.tres" id="3_r0du0"]
-[ext_resource type="Script" uid="uid://c3vxx0d63n0po" path="res://color_object.gd" id="5_3dxm6"]
-[ext_resource type="PackedScene" uid="uid://dd50vby1er1ws" path="res://rock.tscn" id="5_03owx"]
-[ext_resource type="PackedScene" uid="uid://dvee5nfi4vq6s" path="res://box.tscn" id="7_lgr22"]
-[ext_resource type="PackedScene" uid="uid://dgs1rohxrnucn" path="res://death_zone.tscn" id="7_trn2v"]
+[ext_resource type="Script" uid="uid://c3vxx0d63n0po" path="res://scripts/color_object.gd" id="5_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://dd50vby1er1ws" path="res://objects/rock/rock.tscn" id="5_03owx"]
+[ext_resource type="PackedScene" uid="uid://dvee5nfi4vq6s" path="res://objects/box/box.tscn" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://dgs1rohxrnucn" path="res://objects/death_zone/death_zone.tscn" id="7_trn2v"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_03owx"]
 dof_blur_far_enabled = true

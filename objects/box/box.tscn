@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dvee5nfi4vq6s"]
 
 [ext_resource type="Texture2D" uid="uid://c6p1wxd6snsf1" path="res://assets/box_Caixa.png.png" id="1_g2tbl"]
-[ext_resource type="Script" uid="uid://c3vxx0d63n0po" path="res://color_object.gd" id="1_oq5cr"]
+[ext_resource type="Script" uid="uid://c3vxx0d63n0po" path="res://scripts/color_object.gd" id="1_oq5cr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5u8e"]
 resource_name = "Material"

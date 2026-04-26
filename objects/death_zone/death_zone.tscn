@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgs1rohxrnucn"]
 
-[ext_resource type="Script" uid="uid://c3vxx0d63n0po" path="res://color_object.gd" id="1_2aghb"]
+[ext_resource type="Script" uid="uid://c3vxx0d63n0po" path="res://scripts/color_object.gd" id="1_2aghb"]
 [ext_resource type="Texture2D" uid="uid://dsucikfsrehkw" path="res://assets/dead.png" id="2_f7myi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c6i3y"]
