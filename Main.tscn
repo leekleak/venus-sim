@@ -39,10 +39,9 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_fos0i")
 size = Vector2(50, 50)
 
-[node name="Node3D" type="Node3D" unique_id=1381233979 node_paths=PackedStringArray("robot1", "robot2")]
+[node name="Node3D" type="Node3D" unique_id=1381233979 node_paths=PackedStringArray("robots")]
 script = ExtResource("1_3dxm6")
-robot1 = NodePath("Robot")
-robot2 = NodePath("Robot2")
+robots = [NodePath("Robot"), NodePath("Robot2")]
 
 [node name="Node3D" type="Node3D" parent="." unique_id=271990406]
 transform = Transform3D(-0.22940427, -0.7176151, 0.65757304, -1.492773e-08, 0.6755903, 0.7372774, -0.97333133, 0.16913459, -0.15498328, 0, 0, 0)
@@ -57,7 +56,7 @@ fov = 41.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012, 0, -0.12911017)
 
 [node name="Robot2" parent="." unique_id=447241174 instance=ExtResource("1_uu6xs")]
-transform = Transform3D(-0.9983237, 0, -0.057877753, 0, 1, 0, 0.057877753, 0, -0.9983237, -0.024, 0, 0.12144542)
+transform = Transform3D(-0.999998, 0, 0.0020070076, 0, 1, 0, -0.0020070076, 0, -0.999998, -0.024, 0, 0.12144542)
 
 [node name="Control" type="Control" parent="." unique_id=2004248089 node_paths=PackedStringArray("robot1", "robot2")]
 layout_mode = 3
@@ -126,6 +125,7 @@ environment = SubResource("Environment_rxg2q")
 [node name="Environment" type="Node3D" parent="." unique_id=1591908052]
 
 [node name="Stage" type="StaticBody3D" parent="Environment" unique_id=1719763475]
+collision_layer = 3
 script = ExtResource("5_3dxm6")
 color = Color(1, 1, 1, 1)
 
@@ -146,7 +146,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.026, 0)
 shape = SubResource("WorldBoundaryShape3D_3dxm6")
 
 [node name="Platform2" type="MeshInstance3D" parent="Environment/Outside" unique_id=602672911]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01533252, 0.011850834, 0.0015271902)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0146202445, 0.011850953, 0.005109191)
 mesh = SubResource("PlaneMesh_3dxm6")
 
 [node name="DeathZone" parent="Environment" unique_id=1254137864 instance=ExtResource("7_trn2v")]
@@ -179,8 +179,12 @@ transform = Transform3D(0.0772424, 0, 0.18448202, 0, 0.2, 0, -0.18448202, 0, 0.0
 [node name="Rock3" parent="." unique_id=2101275796 instance=ExtResource("5_03owx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82791173, 0.035775565, -0.8403707)
 
+[node name="Rock5" parent="." unique_id=753392513 instance=ExtResource("5_03owx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012260228, 0.054199778, 0.6219824)
+color = Color(0.29698044, 0.6573214, 1, 1)
+
 [node name="Rock2" parent="." unique_id=715524415 instance=ExtResource("5_03owx")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.2619524, 0.03932873, 0.647071)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.3350001, 0.03932873, -0.2097615)
 color = Color(0.50996745, 0.71635664, 0, 1)
 
 [node name="Rock4" parent="." unique_id=1587493105 instance=ExtResource("5_03owx")]

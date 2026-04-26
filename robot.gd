@@ -2,39 +2,35 @@ class_name Robot
 extends CharacterBody3D
 
 @export var manual: bool = false
-@onready var wheel_l: Node3D = $WheelL
-@onready var wheel_r: Node3D = $WheelR
 @onready var color_sensor_1: RayCast3D = $ColorSensor1
 @onready var distance_sensor_1: RayCast3D = $DistanceSensor1
-var rotationSpeed = 2
+var rotationSpeed = 1
 
 var distance_sensor_1_output: float = 10.0
 var color_sensor_1_output: Color = Color.WHITE
 
-var motor_control: Vector2i = Vector2i(0, 0)
+var motor_control: Vector2 = Vector2(0, 0)
+var track_width: float = 0.14 
+@export var max_speed: float = 0.5
 
 func _physics_process(delta: float) -> void:
-	var left = Input.is_action_pressed("left") if (manual) else motor_control.x
-	var right = Input.is_action_pressed("right") if (manual) else motor_control.y
-	motor_control = Vector2i(0, 0)
+	var left = Input.get_action_strength("left") if (manual) else motor_control.x
+	var right = Input.get_action_strength("right") if (manual) else motor_control.y
 	
-	var target_velocity = Vector3.ZERO
-	var rotation_amount = 0.0
-
-	if left and right:
-		target_velocity = -global_transform.basis.z * (rotationSpeed / 6.0)
-	elif left:
-		var pivot = wheel_l.global_position
-		rotation_amount = rotationSpeed * delta
-		target_velocity = calculate_pivot_velocity(pivot, rotation_amount, delta)
-		rotate_y(rotation_amount)
-	elif right:
-		var pivot = wheel_r.global_position
-		rotation_amount = -rotationSpeed * delta
-		target_velocity = calculate_pivot_velocity(pivot, rotation_amount, delta)
-		rotate_y(rotation_amount)
-	velocity = target_velocity
+	motor_control = Vector2.ZERO
+	var v_left = left * max_speed
+	var v_right = right * max_speed
+	var linear_v = (v_left + v_right) / 2.0
+	var angular_v = (v_right - v_left) / track_width
+	rotate_y(angular_v * delta)
+	
+	velocity = -global_transform.basis.z * linear_v
 	move_and_slide()
+
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * 1)
 		
 	# Distance 1
 	var collider = distance_sensor_1.get_collider()

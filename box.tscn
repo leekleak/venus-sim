@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dvee5nfi4vq6s"]
 
 [ext_resource type="Texture2D" uid="uid://c6p1wxd6snsf1" path="res://assets/box_Caixa.png.png" id="1_g2tbl"]
+[ext_resource type="Script" uid="uid://c3vxx0d63n0po" path="res://color_object.gd" id="1_oq5cr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5u8e"]
 resource_name = "Material"
@@ -29,6 +30,9 @@ size = Vector3(4.4957886, 2.0061035, 1.9700928)
 
 [node name="box" type="StaticBody3D" unique_id=643047468]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+collision_layer = 3
+script = ExtResource("1_oq5cr")
+color = Color(0.6448269, 0.3634055, 0.1985741, 1)
 
 [node name="Cube" type="MeshInstance3D" parent="." unique_id=851669579]
 transform = Transform3D(2.2719219, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
