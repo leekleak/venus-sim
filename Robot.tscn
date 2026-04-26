@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://idrtf4nuugyf"]
 
 [ext_resource type="Script" uid="uid://n80qwnn5nb7m" path="res://robot.gd" id="1_lhh6t"]
+[ext_resource type="PackedScene" uid="uid://q8ay4ykfudpd" path="res://robot.glb" id="2_8mo4m"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lhh6t"]
 radius = 0.05
@@ -22,24 +23,31 @@ height = 0.285
 [node name="Robot" type="CharacterBody3D" unique_id=892020308]
 script = ExtResource("1_lhh6t")
 
+[node name="robot" parent="." unique_id=534791038 instance=ExtResource("2_8mo4m")]
+transform = Transform3D(-0.14553197, 0, -0.20939305, 0, 0.255, 0, 0.20939305, 0, -0.14553197, -0.09108323, -0.14232749, -0.011342853)
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1426680914]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21583602, -0.04906879)
+visible = false
 mesh = SubResource("CapsuleMesh_lhh6t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=522864043]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12591416, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_8p8qe")
 
 [node name="WheelL" type="MeshInstance3D" parent="." unique_id=1093294644]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.07972275, 0.05880949, -0.0027199686)
+visible = false
 mesh = SubResource("CylinderMesh_8p8qe")
 
 [node name="WheelR" type="MeshInstance3D" parent="." unique_id=1877702832]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.08170754, 0.05880949, -0.0027199686)
+visible = false
 mesh = SubResource("CylinderMesh_8p8qe")
 
 [node name="ColorSensor1" type="RayCast3D" parent="." unique_id=1736251541]
-transform = Transform3D(1, 0, 0, 0, 1, -1.7484555e-07, 0, 1.7484555e-07, 1, 0, 0.18199241, -0.0960276)
+transform = Transform3D(1, 0, 0, 0, 0.93136114, -0.3640968, 0, 0.3640968, 0.93136114, 0, 0.18199241, -0.04519603)
 
 [node name="DistanceSensor1" type="RayCast3D" parent="." unique_id=1319081156]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.02228479, -0.0751777)

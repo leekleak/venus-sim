@@ -64,18 +64,6 @@ grow_vertical = 2
 script = ExtResource("3_fos0i")
 robot = NodePath("../Robot")
 
-[node name="HSlider" type="HSlider" parent="Control" unique_id=714826300]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 19.0
-offset_top = -32.0
-offset_right = 235.0
-offset_bottom = -16.0
-grow_vertical = 0
-max_value = 360.0
-
 [node name="Label" type="Label" parent="Control" unique_id=240803947]
 layout_mode = 0
 offset_right = 40.0
@@ -86,10 +74,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 19.0
-offset_top = -74.0
-offset_right = 191.0
-offset_bottom = -43.0
+offset_left = 24.0
+offset_top = -50.0
+offset_right = 196.0
+offset_bottom = -19.0
 grow_vertical = 0
 text = "Run exploration"
 
@@ -109,7 +97,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_cm0pq")
 
 [node name="CSGMesh3D3" type="CSGMesh3D" parent="Environment" unique_id=1822357356]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19692945, 0.020376444, 0.643298)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19692945, 0.017007723, 0.643298)
 use_collision = true
 mesh = SubResource("BoxMesh_lgr22")
 script = ExtResource("5_3dxm6")
@@ -131,6 +119,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0128593445, 0)
 script = ExtResource("5_3dxm6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D" unique_id=747339041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.026, 0)
 shape = SubResource("WorldBoundaryShape3D_3dxm6")
 
 [node name="Platform2" type="MeshInstance3D" parent="Environment/StaticBody3D" unique_id=602672911]
@@ -140,5 +129,4 @@ mesh = SubResource("PlaneMesh_3dxm6")
 transform = Transform3D(0.5544087, 0.53773314, -0.63519603, 0, 0.76323247, 0.646124, 0.8322445, -0.3582168, 0.42314273, 0, 1.8347338, 0)
 shadow_enabled = true
 
-[connection signal="value_changed" from="Control/HSlider" to="Node3D" method="_on_h_slider_value_changed"]
 [connection signal="toggled" from="Control/CheckButton" to="." method="_on_check_button_toggled"]
